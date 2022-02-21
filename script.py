@@ -1,5 +1,5 @@
 class Profile:
-    def __init__(self, name, level, workout, time, weights = False):
+    def __init__(self, name, level, workout, time = 30, weights = False):
         self.name = name
         self.level = level
         self.workout = workout
@@ -31,10 +31,11 @@ class Exercise:
 
 name = input('what is your name?').title()
 level = input('how strong are you?')
+workout = input('what kind of workout do you want?')
 
 pushups = Exercise('pushups', 'chest & arms')
 
-you = Profile(name, level)
+you = Profile(name, level, workout)
 
 print(you)
 print(pushups)
