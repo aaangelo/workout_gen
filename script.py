@@ -20,11 +20,12 @@ class Exercise:
         self.kg = kg
     
     def __repr__(self):
-       part_1 = '{name}: these are a {bodyarea} excecise. set to {sets} sets and {reps} reps'.format(name=self.name, bodyarea=self.body_area, sets=self.sets, reps=self.reps)
+       part_1 = '{name}: these are a {bodyarea} excecise. set to {sets} sets of {reps} reps '.format(name=self.name, bodyarea=self.body_area, sets=self.sets, reps=self.reps)
        if self.weights == False:
            return part_1 + 'and requires no weights.'
        else:
            return part_1 + 'with weights at {kg}kg.'.format(kg=self.kg)
+
 
 
 
