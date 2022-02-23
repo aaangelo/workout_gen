@@ -11,7 +11,7 @@ class Profile:
 
 
 class Exercise:
-    def __init__(self, name, body_area, sets = 3, reps = 10, weights = False, kg = 5):
+    def __init__(self, name, body_area, weights = False, sets = 2, reps = 10, kg = 5):
         self.name = name
         self.body_area = body_area
         self.sets = sets
@@ -26,6 +26,30 @@ class Exercise:
        else:
            return part_1 + 'with weights at {kg}kg.'.format(kg=self.kg)
 
+    # method that increase the sets, reps or weight depending on strength.       
+
+    def reps_sets_increase(self):
+        if self.weights == True:
+            if self.reps < 12 and self.sets <= 4:
+                self.reps += 1
+            elif self.reps == 12 and self.sets < 4:
+                self.sets += 1
+                self.reps = 8
+            elif self.reps == 12 and self.sets == 4:
+                self.reps = 8
+                self.kg += 1
+        else:
+            if self.reps < 20 and self.sets <= 4:
+                self.reps += 2
+            elif self.reps == 20 and self.sets < 4:
+                self.sets += 1
+                self.reps = 10
+            else:
+                self.reps += 2
+
+# now to create a bunch of excersises
+pushups = Exercise('Pushups', 'upper', False, 3, 8)
+bicep_curls = Exercise('Bicep Curls', 'upper', True)        
 
 
 
@@ -34,9 +58,8 @@ name = input('what is your name?').title()
 level = input('how strong are you?')
 workout = input('what kind of workout do you want?')
 
-pushups = Exercise('pushups', 'chest & arms')
-
 you = Profile(name, level, workout)
 
 print(you)
 print(pushups)
+print(bicep_curls)
