@@ -11,13 +11,15 @@ class Profile:
 
 
 class Exercise:
-    def __init__(self, name, body_area, weights = False, sets = 2, reps = 10, kg = 5):
+    def __init__(self, name, body_area, weights = False, timed = False, sets = 2, reps = 10, kg = 5, mins = 1):
         self.name = name
         self.body_area = body_area
         self.sets = sets
         self.reps = reps
         self.weights = weights
         self.kg = kg
+        self.timed = timed
+        self.mins = mins
     
     def __repr__(self):
        part_1 = '{name}: these are a {bodyarea} excecise. set to {sets} sets of {reps} reps '.format(name=self.name, bodyarea=self.body_area, sets=self.sets, reps=self.reps)
@@ -48,9 +50,39 @@ class Exercise:
                 self.reps += 2
 
 # now to create a bunch of excersises
-pushups = Exercise('Pushups', 'upper', False, 3, 8)
-bicep_curls = Exercise('Bicep Curls', 'upper', True)        
+# upper body with weights:
+bicep_curls = Exercise('Bicep Curls', 'upper', True)
+overhead_tricep_curls = Exercise('Over-head Tricpe extensions', 'upper', True)
+standing_press = Exercise('Standing Press', 'upper', True)        
 
+# upper body without weights:
+pushups = Exercise('Pushups', 'upper', False, 3, 8)
+tricep_dips = Exercise('Tricep Dips', 'upper', False, 3, 8 )
+shadow_box = Exercise('Shadow Box', 'upper', False) 
+
+#core with weights:
+side_bends = Exercise
+twist = Exercise
+
+#core without weights:
+leg_lifts = Exercise
+crunches = Exercise
+plank = Exercise
+
+#cardio
+climbers = Exercise
+burpees = Exercise
+skipping = Exercise
+jogging = Exercise
+
+#lower with weights
+goblin_squat = Exercise
+weighted_lunge = Exercise
+dead_lift = Exercise
+
+#lower without weights
+squats = Exercise
+wall_sit = Exercise
 
 
 
