@@ -22,11 +22,14 @@ class Exercise:
         self.mins = mins
     
     def __repr__(self):
-       part_1 = '{name}: these are a {bodyarea} excecise. set to {sets} sets of {reps} reps '.format(name=self.name, bodyarea=self.body_area, sets=self.sets, reps=self.reps)
-       if self.weights == False:
-           return part_1 + 'and requires no weights.'
+       part_1 = '{name}: these are a {bodyarea} excecise - '.format(name=self.name, bodyarea=self.body_area)
+       if self.timed == True:
+           return part_1 + 'set to {sets} for {mins} mins each.'.format(sets=self.sets, mins=self.mins)
        else:
-           return part_1 + 'with weights at {kg}kg.'.format(kg=self.kg)
+            if self.weights == True:
+                return part_1 + 'set to {sets} sets of {reps} reps with weights at {kg}kg.'.format(sets=self.sets, reps=self.reps, kg=self.kg)
+            else:
+                return part_1 + 'set to {sets} sets of {reps} reps'.format(sets=self.sets, reps=self.reps) 
 
     # method that increase the sets, reps or weight depending on strength.       
 
@@ -56,18 +59,18 @@ overhead_tricep_curls = Exercise('Over-head Tricpe extensions', 'upper', True)
 standing_press = Exercise('Standing Press', 'upper', True)        
 
 # upper body without weights:
-pushups = Exercise('Pushups', 'upper', False, 3, 8)
-tricep_dips = Exercise('Tricep Dips', 'upper', False, 3, 8 )
+pushups = Exercise('Pushups', 'upper', False, False, 3, 8)
+tricep_dips = Exercise('Tricep Dips', 'upper', False, False, 3, 8 )
 shadow_box = Exercise('Shadow Box', 'upper', False) 
 
 #core with weights:
-side_bends = Exercise
-twist = Exercise
+side_bends = Exercise('Side Bends', 'core', True)
+twist = Exercise('Twist', 'core', True)
 
 #core without weights:
-leg_lifts = Exercise
-crunches = Exercise
-plank = Exercise
+leg_lifts = Exercise('Leg Lifts', 'core', False, False, 3, 15)
+crunches = Exercise('Crunches', 'core', False, False, 3, 10)
+plank = Exercise('Plank', 'core', False, True, 2, 0, 0, 1)
 
 #cardio
 climbers = Exercise
