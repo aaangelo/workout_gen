@@ -59,33 +59,33 @@ overhead_tricep_curls = Exercise('Over-head Tricpe extensions', 'upper', True)
 standing_press = Exercise('Standing Press', 'upper', True)        
 
 # upper body without weights:
-pushups = Exercise('Pushups', 'upper', False, False, 3, 8)
-tricep_dips = Exercise('Tricep Dips', 'upper', False, False, 3, 8 )
-shadow_box = Exercise('Shadow Box', 'upper', False) 
+pushups = Exercise('Pushups', 'upper')
+tricep_dips = Exercise('Tricep Dips', 'upper')
+shadow_box = Exercise('Shadow Box', 'upper', False, True)
 
 #core with weights:
 side_bends = Exercise('Side Bends', 'core', True)
 twist = Exercise('Twist', 'core', True)
 
 #core without weights:
-leg_lifts = Exercise('Leg Lifts', 'core', False, False, 3, 15)
-crunches = Exercise('Crunches', 'core', False, False, 3, 10)
+leg_lifts = Exercise('Leg Lifts', 'core')
+crunches = Exercise('Crunches', 'core')
 plank = Exercise('Plank', 'core', False, True, 2, 0, 0, 1)
 
 #cardio
-climbers = Exercise
-burpees = Exercise
-skipping = Exercise
-jogging = Exercise
+climbers = Exercise('Climbers', 'cardio', False, True, 3, 0, 0, 1)
+burpees = Exercise('Burpees', 'cardio', False, True, 3, 0, 0, 1)
+skipping = Exercise('Skipping', 'cardio', False, True, 3, 0, 0, 5)
+
 
 #lower with weights
-goblin_squat = Exercise
-weighted_lunge = Exercise
-dead_lift = Exercise
+goblin_squat = Exercise('Goblin Squat', 'legs', True)
+lunges = Exercise('Lunges', 'legs', True)
+dead_lift = Exercise('Dead Lift', 'legs', True)
 
 #lower without weights
-squats = Exercise
-wall_sit = Exercise
+squats = Exercise('Squats', 'legs')
+wall_sit = Exercise('Wall Sit', 'legs', False, True)
 
 
 
