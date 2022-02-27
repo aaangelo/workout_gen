@@ -1,13 +1,21 @@
 class Profile:
-    def __init__(self, name, level, workout, time = 30, weights = False):
+    def __init__(self, name, level, workout_area, time = 30, weights = False):
         self.name = name
         self.level = level
-        self.workout = workout
+        self.workout_area = workout_area
         self.time = time
         self.weights = weights
 
     def __repr__(self):
         return 'your name is {name} and you are {level} level.'.format(name=self.name, level=self.level)
+
+    def workout_gen(self, workouts_list):
+        personal_workout_list = []
+        for workout in workouts_list:
+            if self.workout_area == workout.body_area and self.weights == workout.weights:
+                personal_workout_list.append(workout)
+        return personal_workout_list
+
 
 
 class Exercise:
@@ -87,14 +95,20 @@ dead_lift = Exercise('Dead Lift', 'legs', True)
 squats = Exercise('Squats', 'legs')
 wall_sit = Exercise('Wall Sit', 'legs', False, True)
 
+workouts_list = [bicep_curls, overhead_tricep_curls,standing_press, pushups, tricep_dips, shadow_box, side_bends, twist, leg_lifts, crunches, plank, climbers, burpees, skipping, goblin_squat, lunges, dead_lift, squats, wall_sit]
+
 
 
 name = input('what is your name?').title()
 level = input('how strong are you?')
 workout = input('what kind of workout do you want?')
-
-you = Profile(name, level, workout)
+time = input('how long do you want your workout to be?(in mins)')
+weights_test = input('do you have weights? yes or no.')
+if weights_test == 'yes':
+    has_weights = True
+else:
+    has_weights = False
+you = Profile(name, level, workout, time, has_weights)
 
 print(you)
-print(pushups)
-print(bicep_curls)
+print(you.workout_gen(workouts_list))
