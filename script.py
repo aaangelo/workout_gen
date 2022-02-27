@@ -10,16 +10,25 @@ class Profile:
         return 'your name is {name} and you are {level} level.'.format(name=self.name, level=self.level)
 
     def workout_gen(self, workouts_list):
+        workout_time = 0
         personal_workout_list = []
         for workout in workouts_list:
-            if self.workout_area == workout.body_area and self.weights == workout.weights:
-                personal_workout_list.append(workout)
-        return personal_workout_list
+            if self.workout_area == workout.body_area:
+                if workout.body_area == 'cardio':
+                    personal_workout_list.append(workout)
+                elif self.weights == workout.weights:
+                    personal_workout_list.append(workout)
+        for exercise in personal_workout_list:
+            workout_time += exercise.mins
+        print('your exercise list is:')
+        for thing in personal_workout_list:
+            print(thing)
+        print( 'it will take ' + str(workout_time) + ' mins to complete.')
 
 
 
 class Exercise:
-    def __init__(self, name, body_area, weights = False, timed = False, sets = 2, reps = 10, kg = 5, mins = 1):
+    def __init__(self, name, body_area, weights = False, timed = False, sets = 2, reps = 10, kg = 5, mins = 5):
         self.name = name
         self.body_area = body_area
         self.sets = sets
@@ -111,4 +120,4 @@ else:
 you = Profile(name, level, workout, time, has_weights)
 
 print(you)
-print(you.workout_gen(workouts_list))
+you.workout_gen(workouts_list)
