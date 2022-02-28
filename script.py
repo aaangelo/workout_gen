@@ -12,14 +12,22 @@ class Profile:
     def workout_gen(self, workouts_list):
         workout_time = 0
         personal_workout_list = []
+        difficulty = 0
+        #creates list depending on body are and wates, excluding cardio for weights
         for workout in workouts_list:
             if self.workout_area == workout.body_area:
                 if workout.body_area == 'cardio':
                     personal_workout_list.append(workout)
                 elif self.weights == workout.weights:
                     personal_workout_list.append(workout)
+        #increase difficulty for level
+        while difficulty < int(self.level):
+            for workout in personal_workout_list:
+                workout.reps_sets_increase()
+            difficulty += 1
+        #adds time of all workouts, then prints exercise list plus time.           
         for exercise in personal_workout_list:
-            workout_time += exercise.mins
+            workout_time += (exercise.mins * exercise.sets)    
         print('your exercise list is:')
         for thing in personal_workout_list:
             print(thing)
@@ -28,7 +36,7 @@ class Profile:
 
 
 class Exercise:
-    def __init__(self, name, body_area, weights = False, timed = False, sets = 2, reps = 10, kg = 5, mins = 5):
+    def __init__(self, name, body_area, weights = False, timed = False, sets = 2, reps = 10, kg = 5, mins = 2):
         self.name = name
         self.body_area = body_area
         self.sets = sets
@@ -53,7 +61,7 @@ class Exercise:
     def reps_sets_increase(self):
         if self.weights == True:
             if self.reps < 12 and self.sets <= 4:
-                self.reps += 1
+                self.reps += 2
             elif self.reps == 12 and self.sets < 4:
                 self.sets += 1
                 self.reps = 8
