@@ -1,9 +1,9 @@
 class Profile:
-    def __init__(self, name, level, workout_area, time = 30, weights = False):
+    def __init__(self, name, level, workout_area, time, weights = False):
         self.name = name
         self.level = int(level) * 2
         self.workout_area = workout_area
-        self.time = time
+        self.time = int(time)
         self.weights = weights
 
     def __repr__(self):
@@ -28,8 +28,11 @@ class Profile:
         #adds time of all workouts           
         for exercise in personal_workout_list:
             workout_time += (exercise.mins * exercise.sets)
-        if workout_time > self.time:
-
+        # adds excercsies until its the right amount of time
+        if workout_time < self.time:
+            print('too short')
+            
+            
 
         # prints exercise list plus time.  
         print('your exercise list is:')
@@ -40,7 +43,7 @@ class Profile:
 
 
 class Exercise:
-    def __init__(self, name, body_area, weights = False, timed = False, sets = 2, reps = 10, kg = 5):
+    def __init__(self, name, body_area, weights = False, timed = False, sets = 2, reps = 10, kg = 5, mins = 1):
         self.name = name
         self.body_area = body_area
         self.sets = sets
@@ -48,7 +51,7 @@ class Exercise:
         self.weights = weights
         self.kg = kg
         self.timed = timed
-        self.mins = int(self.sets) * 2
+        self.mins = mins
     
     def __repr__(self):
        part_1 = '{name}: these are a {bodyarea} excecise - '.format(name=self.name, bodyarea=self.body_area)
@@ -63,7 +66,9 @@ class Exercise:
     # method that increase the sets, reps or weight depending on strength.       
 
     def reps_sets_increase(self):
-        if self.weights == True:
+        if self.timed == True:
+            self.mins += 0.25
+        elif self.weights == True:
             if self.reps < 12 and self.sets <= 4:
                 self.reps += 2
             elif self.reps == 12 and self.sets < 4:
@@ -80,27 +85,6 @@ class Exercise:
                 self.reps = 10
             else:
                 self.reps += 2
-
-    # method that decreases the sets, reps or weight depending on strength
-
-    def reps_sets_decrease(self):
-        if self.weights == True:
-            if self.reps > 8 and self.sets > 2:
-                self.reps -= 2
-            elif self.reps == 8 and self.sets > 2:
-                self.sets -= 1
-                self.reps = 12
-            elif self.reps == 8 and self.sets == 2:
-                self.reps = 12
-                self.kg -= 1
-        else:
-            if self.reps > 8 and self.sets > 2:
-                self.reps -= 2
-            elif self.reps == 8 and self.sets > 2:
-                self.sets -= 1
-                self.reps = 10
-            else:
-                self.reps -= 2
 
 # now to create a bunch of excersises
 # upper body with weights:
@@ -120,12 +104,12 @@ twist = Exercise('Twist', 'core', True)
 #core without weights:
 leg_lifts = Exercise('Leg Lifts', 'core')
 crunches = Exercise('Crunches', 'core')
-plank = Exercise('Plank', 'core', False, True, 2, 0, 0)
+plank = Exercise('Plank', 'core', False, True, 2, 0, 0, 2)
 
 #cardio
-climbers = Exercise('Climbers', 'cardio', False, True, 3, 0, 0,)
-burpees = Exercise('Burpees', 'cardio', False, True, 3, 0, 0)
-skipping = Exercise('Skipping', 'cardio', False, True, 3, 0, 0)
+climbers = Exercise('Climbers', 'cardio', False, True, 3, 0, 0, 2)
+burpees = Exercise('Burpees', 'cardio', False, True, 3, 0, 0, 0.5)
+skipping = Exercise('Skipping', 'cardio', False, True, 3, 0, 0, 2)
 
 
 #lower with weights
