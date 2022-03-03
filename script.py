@@ -31,8 +31,7 @@ class Profile:
         # adds excercsies until its the right amount of time
         if workout_time < self.time:
             print('too short')
-            
-            
+               
 
         # prints exercise list plus time.  
         print('your exercise list is:')
